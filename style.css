@@ -17,11 +17,12 @@ body {
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
+	background-color: rgba(46, 46, 46, 0.5);
 }
 
 .header {
 	width: 100%;
-	background-color: rgb(219, 57, 75);
+	background-color: black;
 	color: white;
 	text-align: center;
 	vertical-align: baseline;
@@ -58,6 +59,7 @@ body {
 	text-align: center;
 	padding: 1rem;
 	animation: animate__backInDown 1.6s;
+	background-color: white;
 }
 
 .monster-health__label, .player-health__label {
