@@ -1,0 +1,113 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+body {
+	margin: 0;
+	height: 100vh;
+	max-width: 100vw;
+}
+
+.header {
+	width: 100%;
+	background-color: rgb(219, 57, 75);
+	color: white;
+	text-align: center;
+	vertical-align: baseline;
+	margin-top: 0;
+	padding: 3rem;
+}
+
+.body {
+	width: 100%;
+	min-height: 70%;
+	margin: 1rem auto;
+	padding: 1rem;
+}
+
+.title {
+	width: 100%;
+	text-align: center;
+	font-size: 1.8rem;
+}
+
+.card {
+	margin: 40px auto;
+	border-radius: 10px;
+	border: solid 1px rgba(0, 0, 0, 0.4);
+	width: 50vw;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+	max-width: 520px;
+	text-align: center;
+	padding: 1rem;
+}
+
+.monster-health__label, .player-health__label {
+	width: 100%;
+	padding: 0.3rem;
+	text-align: center;
+	margin-top: 1.7rem;
+}
+
+.monster-health__container, .player-health__container {
+	width: 75%;
+	height: 2rem;
+	margin: 0.5rem auto;
+	border: 1px solid black;
+	border-radius: 100px;
+}
+
+.monster-health__value, .player-health__value {
+	width: 100%;
+	height: 100%;
+	background-color: #268f16;
+	border-radius: 100px;
+	z-index: 2;
+	position: relative;
+	transition: width cubic-bezier(0.51, 0.43, 0.71, 1.2) 0.7s;
+}
+
+.monster-health__background, .player-health__background {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(38, 143, 22, 0.51);
+	border-radius: 100px;
+	z-index: 1;
+	position: relative;
+	top: -30px;
+	transition: width cubic-bezier(0.51, 0.43, 0.71, 1.2) 1.2s;
+}
+
+.row {
+	margin: 20px;
+	display: flex;
+	justify-content: space-evenly;
+
+}
+
+.button {
+	font-family: inherit;
+	height: 3rem;
+	width: 170px;
+	border: none;
+	border-radius: 10px;
+	background-color: rgb(14, 6, 7);
+	color: white;
+}
+
+.button:hover {
+	cursor: pointer;
+}
+
+.footer {
+	width: 100%;
+	background-color: black;
+	color: white;
+	padding: 1rem;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
