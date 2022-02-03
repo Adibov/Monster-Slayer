@@ -1,5 +1,5 @@
 @media (max-width: 1000px) {
-	html { font-size: 25px; }
+	html { font-size: 35px; }
 }
 
 * {
@@ -14,10 +14,15 @@ body {
 	margin: 0;
 	min-height: 100vh;
 	max-width: 100vw;
+	background-color: rgba(46, 46, 46, 0.5);
+}
+
+#v-main {
+	width: 100%;
+	min-height: 100vh;
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
-	background-color: rgba(46, 46, 46, 0.5);
 }
 
 .header {
@@ -28,6 +33,7 @@ body {
 	vertical-align: baseline;
 	margin-top: 0;
 	padding: 3rem;
+	border-radius: 5px 5px 0 0;
 }
 
 .header__text {
@@ -53,7 +59,7 @@ body {
 	margin: 40px auto;
 	border-radius: 10px;
 	border: solid 1px rgba(0, 0, 0, 0.4);
-	width: 50%;
+	width: 75%;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 	/*max-width: 520px;*/
 	text-align: center;
@@ -101,7 +107,7 @@ body {
 .control {
 	display: flex;
 	flex-direction: column;
-
+	margin-top: 30px;
 }
 
 .row {
@@ -113,16 +119,25 @@ body {
 
 .button {
 	font-family: inherit;
-	height: 3rem;
-	width: 170px;
+	font-size: inherit;
+	height: 4rem;
+	width: 230px;
 	border: none;
 	border-radius: 10px;
 	background-color: rgb(14, 6, 7);
 	color: white;
+	cursor: pointer;
 }
 
-.button:hover {
-	cursor: pointer;
+.button:hover:not([disabled]),
+.button:active:not([disabled]) {
+	transform: scale(1.05, 1.05);
+	background-color: #282727;
+}
+
+.button:disabled {
+	cursor: not-allowed;
+	background-color: rgb(204, 204, 204);
 }
 
 .footer {
@@ -136,6 +151,38 @@ body {
 
 .footer__text {
 	animation: animate__backInDown 0.5s;
+}
+
+.bold-1 {
+	font-size: 0.6rem;
+}
+
+.bold-2 {
+	font-size: 0.8rem;
+}
+
+.bold-3 {
+	font-size: 1.2rem;
+}
+
+.bold-4 {
+	font-size: 1.6rem;
+}
+
+.bold-5 {
+	font-size: 1.8rem;
+}
+
+.bold-6 {
+	font-size: 2rem;
+}
+
+.won-text {
+	color: green;
+}
+
+.lost-text {
+	color: red;
 }
 
 @keyframes animate__backInDown {

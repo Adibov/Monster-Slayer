@@ -6,68 +6,102 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<script src="https://unpkg.com/vue@next" defer></script>
 	<link rel="stylesheet" href="style.css">
-	<link rel="script" href="app.js">
+	<script src="app.js" defer></script>
 </head>
 <body>
-	<h1 class="header">
-		<div class="header__text">
-			Monster Slayer
-		</div>
-	</h1>
+	<div id="v-main">
+		<h1 class="header">
+			<div class="header__text">
+				Monster Slayer
+			</div>
+		</h1>
 
-	<div class="body">
-		<div class="title">
-			Deck
-		</div>
-		<div class="card">
-			<div class="monster-health__label">
-				Monster Health
+		<div class="body">
+			<div class="title">
+				Game
 			</div>
-			<div class="monster-health__container">
-				<div class="monster-health__value"></div>
-				<div class="monster-health__background"></div>
-			</div>
+			<div class="card" v-if="!winner">
+				<div class="monster-health__label">
+					Monster Health
+				</div>
+				<div class="monster-health__container">
+					<div class="monster-health__value" :style="monsterHealthStyles"></div>
+					<div class="monster-health__background" :style="monsterHealthStyles"></div>
+				</div>
 
-			<div class="player-health__label">
-				Player Health
-			</div>
-			<div class="player-health__container">
-				<div class="player-health__value"></div>
-				<div class="player-health__background"></div>
-			</div>
+				<div class="player-health__label">
+					Player Health
+				</div>
+				<div class="player-health__container">
+					<div class="player-health__value" :style="playerHealthStyles"></div>
+					<div class="player-health__background" :style="playerHealthStyles"></div>
+				</div>
 
-			<div class="control">
-				<div class="row">
-					<button class="button">
-						Attack
-					</button>
-					<button class="button">
-						Special Attack
-					</button>
+				<div class="control">
+					<div class="row">
+						<button class="button" @click="attackMonster">
+							Attack
+						</button>
+						<button class="button" :disabled="!canPerformSpecialAttack" @click="specialAttack">
+							Special Attack
+						</button>
+					</div>
+					<div class="row">
+						<button class="button" @click="healPlayer">
+							Heal
+						</button>
+						<button class="button" @click="surrender">
+							Surrender
+						</button>
+					</div>
+				</div>
+			</div>
+			<div v-else class="card">
+				<div class="row bold-6">Game Over</div>
+				<div v-if="winner === 'player'" class="won-text">
+					You won!
+				</div>
+				<div v-else-if="winner === 'monster'" class="lost-text">
+					You Lost!
+				</div>
+				<div v-else>
+					It's a draw!
 				</div>
 				<div class="row">
-					<button class="button">
-						Heal
-					</button>
-					<button class="button">
-						Surrender
-					</button>
+					<button class="button" @click="startNewGame">Start a New Game</button>
+				</div>
+			</div>
+
+			<div class="title">
+				Battle Logs
+			</div>
+			<div v-if="battleLog.length === 0" class="card">
+				Nothing to be shown here!
+			</div>
+			<div v-else class="card">
+				<div v-for="log in battleLog" class="row">
+					<div v-if="log.target === 'heal'">
+						<span :style="logStyle(log, log.attacker)"> {{ log.attacker }} </span>
+						healed himself for
+						<span :style="logStyle(log, 'damage')"> {{ log.damage }} </span>
+					</div>
+					<div v-else>
+						<span :style="logStyle(log, log.attacker)"> {{ log.attacker }} </span>
+						deals
+						<span :style="logStyle(log, 'damage')"> {{ log.damage }} </span>
+						damage to
+						<span :style="logStyle(log, log.target)"> {{ log.target }} </span>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="title">
-			Battle Log
-		</div>
-		<div class="card">
-			Nothing to be shown here!
-		</div>
-	</div>
-
-	<div class="footer">
-		<div class="footer__text">
-			Developed by Love!
+		<div class="footer">
+			<div class="footer__text">
+				Developed by Love! ❤️
+			</div>
 		</div>
 	</div>
 </body>
